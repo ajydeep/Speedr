@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f0e8;
+  --surface: #faf7f1;
+  --foreground: #141b2d;
+  --muted-foreground: #5e6270;
+  --border: #d8d2c5;
+  --accent: #d97706;
+  --ring: #f59e0b;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-ring: var(--ring);
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono);
+}
+
+.dark {
+  --background: #111827;
+  --surface: #192235;
+  --foreground: #e5e7eb;
+  --muted-foreground: #a8b0c0;
+  --border: #2f3a4f;
+  --accent: #f59e0b;
+  --ring: #fbbf24;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
+}
+
+* {
+  border-color: var(--border);
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+.prose-balanced {
+  text-wrap: balance;
+}
+
+.reader-split {
+  display: grid;
+  min-height: 50svh;
+  overflow: hidden;
+  grid-template-columns: minmax(0, 1fr) 12px var(--controls-width, 340px);
+}
+
+@media (max-width: 767px) {
+  .reader-split {
+    grid-template-columns: 1fr;
+  }
+
+  .reader-split-handle {
+    display: none !important;
+  }
+}
